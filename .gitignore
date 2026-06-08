@@ -1,0 +1,4 @@
+.jira-credentials.json
+node_modules/
+dist/
+.claude/
