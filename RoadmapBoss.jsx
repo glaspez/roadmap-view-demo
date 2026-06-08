@@ -285,7 +285,7 @@ function epicToTheme(parentSummary,ticketSummary){
   if(t.includes("pere - editorials")||t.includes("obx pere - editorial")) return "Editorial";
   if(t.includes("pere - navigation")||t.includes("pere: navigation")) return "Navigation / UX";
   if(t.includes("pere - listing")||t.includes("pere: listing")) return "Editorial";
-  if(t.includes("pere - data")||t.includes("pere: data"))  return "Data Room";
+  if(t.includes("pere - data")||t.includes("pere: data"))  return "Data Scheduler";
   if(t.includes("pere - network")||t.includes("pere: network")||t.includes("network integration")) return "Platform";
   if(t.includes("newsletter"))                              return "Marketing";
   if(t.includes("ask pei")||t.includes("askpei"))           return "Ask PEI";
@@ -300,7 +300,7 @@ function epicToTheme(parentSummary,ticketSummary){
   if(t.includes("analytics")||t.includes("tracking")||t.includes("ga4")||t.includes("gtm")||t.includes("heap")||t.includes("datalayer")) return "Analytics / Tracking";
   if(t.includes("request a demo")||t.includes("demo request")||t.includes("request demo")||t.includes("demo")) return "Request a Demo";
   if(t.includes("header")||t.includes("footer")||t.includes("navigation")||t.includes("nav ")||t.includes("breadcrumb")) return "Navigation / UX";
-  if(t.includes("tech debt")||t.includes("deals")||t.includes("data room")||t.includes("database")) return "Data Room";
+  if(t.includes("tech debt")||t.includes("deals")||t.includes("data room")||t.includes("database")) return "Data Scheduler";
   if(t.includes("sponsored")||t.includes("thought leadership")||t.includes("sponsor")) return "Sponsored Content";
   if(t.includes("bug")||t.includes("fix")||t.includes("issue")||t.includes("error")||t.includes("broken")||t.includes("not appear")) return "Bugs";
   if(t.includes("zephr")||t.includes("platform")||t.includes("infrastructure")||t.includes("logging")||t.includes("sso")||t.includes("s3")||t.includes("wordpress")||t.includes("lazy load")||t.includes("network")) return "Platform";
@@ -2283,7 +2283,7 @@ export default function App(){
                     <td style={{padding:"5px 6px",width:105}}>
                       <div style={{display:"flex",alignItems:"center",gap:3}}>
                         {CFG.protectPriority&&!(CFG.priorityMapTeams||[]).includes(r.team)&&<Tip text="Priority protected — not overwritten on import. Unlock per-team in Settings."><span style={{fontSize:9}}>🔒</span></Tip>}
-                        <PillSelect value={r.priority||defaultPriority()} opts={PRIORITY_OPTS} onChange={v=>update(r._id,"priority",v)} getColor={p=>PRIORITY_COL[p]}/>
+                        <PillSelect value={r.priority||defaultPriority()} opts={PRIORITY_OPTS} onChange={v=>update(r._id,"priority",v)} getColor={p=>PRIORITY_COL[p]} labelFn={p=>String(p).replace(/^[^A-Za-z]+/,"")}/>
                       </div>
                     </td>
                     <td style={{padding:"5px 6px",width:95}}><PillSelect value={r.sprint||"TBD"} opts={sprintOpts} onChange={v=>update(r._id,"sprint",v)} getColor={s=>{const n=sprintNumOf(s);return n>0?sprintCol(n):"#64748b";}}/></td>
